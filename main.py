@@ -2,6 +2,7 @@
 import os
 
 from dotenv import load_dotenv
+from fastapi.middleware.cors import CORSMiddleware
 
 from fastapi import FastAPI, Request, Response, status
 
@@ -14,6 +15,16 @@ password_length = 13
 KEY = os.getenv('KEY')
 
 app = FastAPI()
+
+origins = ["*"]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["POST"],
+    allow_headers=["*"],
+)
 
 @app.post("/reset_password")
 async def create_command(request: Request, response: Response):
