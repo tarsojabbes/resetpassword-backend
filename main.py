@@ -5,6 +5,10 @@ from dotenv import load_dotenv
 from fastapi.middleware.cors import CORSMiddleware
 
 from fastapi import FastAPI, Request, Response, status
+import datetime
+import logging
+
+logging.basicConfig(filename='reset.log', level=logging.INFO, format='%(asctime)s - %(message)s')
 
 import secrets
 
@@ -31,7 +35,10 @@ async def create_command(request: Request, response: Response):
     obj = await request.json()
     email, host = obj['email'].split('@')
     print(email, host)
-    if host not in ['ccc.ufcg.edu.br', 'computacao.ufcg.edu.br']:
+    print(KEY)
+    if obj['key'] != KEY or host not in ['ccc.ufcg.edu.br', 'computacao.ufcg.edu.br']:
+        log_message = f"{email}@{host} couldn't change LDAP password - Unauthorized"
+        logging.info(log_message)
         response.status_code = status.HTTP_403_FORBIDDEN
         return str({"status": "forb"})
     if host == 'computacao.ufcg.edu.br':
