@@ -1,0 +1,4 @@
+*.md
+*.log
+.dockerignore
+Dockerfile
