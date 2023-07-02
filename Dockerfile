@@ -9,8 +9,8 @@ RUN apk add --no-cache build-base openldap-dev python3-dev && \
 
 COPY . .
 
-ENV PORT 5000
+EXPOSE 5000
 
 ENTRYPOINT [ "/usr/local/bin/uvicorn" ]
 
-CMD [ "main:app", "--port", "5000" ]
+CMD [ "main:app", "--port", "5000", "--host", "0.0.0.0" ]

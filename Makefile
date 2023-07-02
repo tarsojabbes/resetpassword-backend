@@ -5,7 +5,7 @@ build:
 	docker build -t ${DOCKER_IMAGE} .
 
 run:
-	docker run --rm --network host ${DOCKER_IMAGE}
+	docker run --env-file .env --rm --network host ${DOCKER_IMAGE}
 
 rund:
-	docker run -d --network host ${DOCKER_IMAGE}
+	docker run --env-file .env -d --network host ${DOCKER_IMAGE}

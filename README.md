@@ -15,6 +15,12 @@ pip install -r requirements.txt
 uvicorn main:app --port 5000
 ```
 
+Copie o `.env.sample` para o `.env` configurando suas variáveis de ambiente:
+
+```sh
+cp .env.sample .env
+```
+
 ### Com Docker
 
 #### Pré-requisitos
