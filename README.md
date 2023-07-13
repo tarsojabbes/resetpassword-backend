@@ -40,3 +40,9 @@ make run # rodar em foreground
 # or
 make rund # rodar em background
 ```
+
+3. Parar o container (background) após o uso:
+
+```sh
+make stop
+```
