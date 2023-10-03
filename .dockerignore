@@ -2,3 +2,5 @@
 *.log
 .dockerignore
 Dockerfile
+.env*
+.gitignore
